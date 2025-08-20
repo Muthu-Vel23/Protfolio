@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Muthu Vel K</title>
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Internal CSS for contact page -->
+    <style>
+        .contact-hero {
+            background: linear-gradient(135deg, #1e293b 0%, #475569 100%);
+            color: white;
+            padding: 80px 0;
+        }
+        
+        .contact-form {
+            background: white;
+            padding: 40px;
+            border-radius: 16px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            margin-top: -50px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #9333ea;
+            box-shadow: 0 0 0 3px rgba(147, 51, 234, 0.1);
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-content">
+                <div class="logo-section">
+                    <div class="logo-circle">
+                        <span class="logo-text">M</span>
+                    </div>
+                    <span class="brand-name">Muthu Vel K</span>
+                </div>
+                <div class="nav-links">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="projects.html" class="nav-link">Projects</a>
+                    <a href="contact.html" class="nav-link active">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Hero -->
+    <section class="contact-hero">
+        <div class="container">
+            <div class="text-center">
+                <h1 class="page-title" style="color: white;">Get In Touch</h1>
+                <p class="page-subtitle" style="color: rgba(255,255,255,0.9);">Let's discuss opportunities and collaborations</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Content -->
+    <main class="contact-content">
+        <div class="container">
+            <div class="contact-grid">
+                <!-- Contact Form -->
+                <div class="contact-form-section">
+                    <form class="contact-form" action="#" method="POST">
+                        <h2 style="color: #1f2937; margin-bottom: 30px; font-size: 28px;">Send me a message</h2>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Full Name *</label>
+                                <input 
+                                    type="text" 
+                                    id="name" 
+                                    name="name" 
+                                    required 
+                                    placeholder="Enter your full name"
+                                    minlength="2"
+                                    maxlength="50"
+                                    style="width: 100%; padding: 12px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 16px;"
+                                >
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input 
+                                    type="email" 
+                                    id="email" 
+                                    name="email" 
+                                    required 
+                                    placeholder="your.email@example.com"
+                                    style="width: 100%; padding: 12px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 16px;"
+                                >
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Contact Number</label>
+                            <input 
+                                type="tel" 
+                                id="phone" 
+                                name="phone" 
+                                placeholder="+91 9876543210"
+                                pattern="[+]?[0-9\s\-$$$$]+"
+                                title="Please enter a valid phone number"
+                                style="width: 100%; padding: 12px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 16px;"
+                            >
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject *</label>
+                            <input 
+                                type="text" 
+                                id="subject" 
+                                name="subject" 
+                                required 
+                                placeholder="What's this about?"
+                                minlength="5"
+                                maxlength="100"
+                                style="width: 100%; padding: 12px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 16px;"
+                            >
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message *</label>
+                            <textarea 
+                                id="message" 
+                                name="message" 
+                                required 
+                                rows="6" 
+                                placeholder="Tell me about your project or opportunity..."
+                                minlength="10"
+                                maxlength="1000"
+                                style="width: 100%; padding: 12px; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 16px; resize: vertical;"
+                            ></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-button">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="contact-info-section">
+                    <div class="contact-info">
+                        <h3>Let's Connect</h3>
+                        <p>I'm always interested in new opportunities, collaborations, and interesting projects. Feel free to reach out!</p>
+                        
+                        <div class="contact-details">
+                            <div class="contact-item">
+                                <div class="contact-icon" style="background: #9333ea; color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+                                    📧
+                                </div>
+                                <div>
+                                    <h4>Email</h4>
+                                    <a href="mailto:muthu2311vel@gmail.com">muthu2311vel@gmail.com</a>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon" style="background: #9333ea; color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+                                    📱
+                                </div>
+                                <div>
+                                    <h4>Phone</h4>
+                                    <a href="tel:+919345178185">+91 9345178185</a>
+                                </div>
+                            </div>
+                            
+                            <div class="contact-item">
+                                <div class="contact-icon" style="background: #9333ea; color: white; width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
+                                    📍
+                                </div>
+                                <div>
+                                    <h4>Location</h4>
+                                    <p>Sivakasi, Tamil Nadu, India</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="response-time" style="margin-top: 30px; padding: 20px; background: #f8fafc; border-radius: 12px; border-left: 4px solid #9333ea;">
+                            <h4 style="color: #9333ea; margin-bottom: 10px;">Quick Response</h4>
+                            <p style="margin: 0; color: #64748b;">I typically respond to messages within 24 hours. For urgent matters, feel free to call directly.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Muthu Vel K. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="mailto:muthu2311vel@gmail.com">muthu2311vel@gmail.com</a>
+                    <span>|</span>
+                    <a href="tel:+919345178185">+91 9345178185</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

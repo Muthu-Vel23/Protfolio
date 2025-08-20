@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects - Muthu Vel K</title>
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎓</text></svg>">
+    <link rel="stylesheet" href="styles.css">
+    <!-- Internal CSS for projects page -->
+    <style>
+        .projects-hero {
+            background: linear-gradient(135deg, #9333ea 0%, #ec4899 100%);
+            color: white;
+            padding: 80px 0;
+        }
+        
+        .project-card {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(147, 51, 234, 0.2);
+        }
+
+        /* Added custom project visual elements instead of images */
+        .project-visual {
+            height: 200px;
+            border-radius: 15px;
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .visual-3d {
+            background: linear-gradient(135deg, #1e293b 0%, #334155 50%, #475569 100%);
+            position: relative;
+        }
+
+        .visual-3d::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 60px;
+            height: 60px;
+            border: 3px solid #9333ea;
+            border-radius: 50%;
+            animation: rotate 4s linear infinite;
+        }
+
+        .visual-3d::after {
+            content: '';
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            width: 80px;
+            height: 80px;
+            border: 2px solid #ec4899;
+            border-radius: 10px;
+            transform: rotate(45deg);
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .visual-3d .tech-icons {
+            display: flex;
+            gap: 20px;
+            z-index: 2;
+        }
+
+        .tech-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            backdrop-filter: blur(10px);
+        }
+
+        .visual-manager {
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            position: relative;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+            width: 80%;
+            height: 60%;
+        }
+
+        .dashboard-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dashboard-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #9333ea, #ec4899);
+        }
+
+        .dashboard-card .icon {
+            font-size: 20px;
+            color: #9333ea;
+        }
+
+        .progress-bar {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 6px;
+            background: rgba(147, 51, 234, 0.2);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #9333ea, #ec4899);
+            border-radius: 3px;
+            animation: progress 3s ease-in-out infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; transform: rotate(45deg) scale(1); }
+            50% { opacity: 1; transform: rotate(45deg) scale(1.1); }
+        }
+
+        @keyframes progress {
+            0% { width: 0%; }
+            50% { width: 75%; }
+            100% { width: 0%; }
+        }
+
+        /* Added styles for certificates section */
+        .certificates-section {
+            background: #f8fafc;
+            padding: 80px 0;
+        }
+
+        .certificate-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border-left: 5px solid #9333ea;
+        }
+
+        .certificate-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(147, 51, 234, 0.15);
+        }
+
+        .certificate-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 10px;
+        }
+
+        .certificate-issuer {
+            font-size: 1.1rem;
+            color: #9333ea;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .certificate-date {
+            color: #64748b;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .certificate-details {
+            color: #475569;
+            line-height: 1.6;
+        }
+
+        .certificate-score {
+            background: linear-gradient(135deg, #9333ea, #ec4899);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+            margin-top: 10px;
+        }
+
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            .certificates-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-content">
+                <div class="logo-section">
+                    <div class="logo-circle">
+                        <span class="logo-text">M</span>
+                    </div>
+                    <span class="brand-name">Muthu Vel K</span>
+                </div>
+                <div class="nav-links">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="about.html" class="nav-link">About</a>
+                    <a href="projects.html" class="nav-link active">Projects</a>
+                    <a href="contact.html" class="nav-button">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Projects Hero -->
+    <section class="projects-hero">
+        <div class="container">
+            <div class="text-center">
+                <h1 class="page-title" style="color: white;">My Projects & Achievements</h1>
+                <p class="page-subtitle" style="color: rgba(255,255,255,0.9);">Current research work and professional certifications</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <main class="projects-content">
+        <div class="container">
+            <div class="section-header text-center" style="margin-bottom: 50px;">
+                <h2 class="section-title">Projects</h2>
+                <p class="section-subtitle">Research work and development projects</p>
+            </div>
+            
+            <!-- Updated projects grid to show multiple projects -->
+            <div class="projects-grid">
+                <!-- Current Research Project -->
+                <div class="project-card">
+                    <!-- Replaced image with 3D reconstruction visual elements -->
+                    <div class="project-visual visual-3d">
+                        <div class="tech-icons">
+                            <div class="tech-icon">📷</div>
+                            <div class="tech-icon">🔬</div>
+                            <div class="tech-icon">📐</div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">Multiview 3D Reconstruction using Incremental Structure-from-Motion</h3>
+                        <p class="project-description">
+                            Reconstructing accurate 3D models from 2D images is essential in fields such as autonomous driving, AR/VR, and cultural digitization—but common solutions often rely on expensive sensors like LiDAR. Our goal: to build a cost-effective solution using only RGB images, leveraging Incremental Structure-from-Motion (SfM) to reconstruct sparse 3D point clouds and estimate precise camera poses.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Deep Learning</span>
+                            <span class="tech-tag">Computer Vision</span>
+                            <span class="tech-tag">Structure-from-Motion</span>
+                            <span class="tech-tag">3D Reconstruction</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">OpenCV</span>
+                        </div>
+                        <div class="project-status" style="margin-top: 20px;">
+                            <span class="status-badge" style="background: linear-gradient(135deg, #9333ea, #ec4899); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600;">In Progress</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Added ManagerMate project -->
+                <div class="project-card">
+                    <!-- Replaced image with dashboard-style visual elements -->
+                    <div class="project-visual visual-manager">
+                        <div class="dashboard-grid">
+                            <div class="dashboard-card">
+                                <div class="icon">📋</div>
+                            </div>
+                            <div class="dashboard-card">
+                                <div class="icon">📊</div>
+                            </div>
+                            <div class="dashboard-card">
+                                <div class="icon">🎯</div>
+                            </div>
+                            <div class="dashboard-card">
+                                <div class="icon">👤</div>
+                            </div>
+                            <div class="dashboard-card">
+                                <div class="icon">🏆</div>
+                            </div>
+                            <div class="dashboard-card">
+                                <div class="icon">⚙️</div>
+                            </div>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3 class="project-title">ManagerMate - Employee Management & Productivity Platform</h3>
+                        <p class="project-description">
+                            A comprehensive web-based employee management and productivity platform designed to help individuals and teams organize, track, and optimize their work performance. Features centralized task management, progress tracking, gamification elements, smart notifications, and personal organization tools with a complete backend architecture.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Flask</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">SQLite</span>
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">Flask-Mail</span>
+                            <span class="tech-tag">Werkzeug</span>
+                        </div>
+                        <div class="project-features" style="margin-top: 15px;">
+                            <p style="color: #64748b; font-size: 0.95rem; line-height: 1.6;">
+                                <strong>Key Features:</strong> Task & Project Management, Goal Setting, Achievement System, Gamification (Points, Badges, Levels), Email Notifications, User Authentication, File Upload, Multi-theme Support, Data Export
+                            </p>
+                        </div>
+                        <div class="project-status" style="margin-top: 20px;">
+                            <span class="status-badge" style="background: linear-gradient(135deg, #10b981, #059669); color: white; padding: 8px 20px; border-radius: 25px; font-weight: 600;">Completed</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Added certificates section -->
+    <section class="certificates-section">
+        <div class="container">
+            <div class="section-header text-center">
+                <h2 class="section-title">Professional Certifications</h2>
+                <p class="section-subtitle">Academic achievements and industry training</p>
+            </div>
+            
+            <div class="certificates-grid">
+                <!-- Internship Certificates -->
+                <div class="certificate-card">
+                    <h3 class="certificate-title">Full Stack Developer - Python Domain</h3>
+                    <div class="certificate-issuer">Gradtwin Services (OPC) Private Limited</div>
+                    <div class="certificate-date">June 23, 2025 - July 9, 2025</div>
+                    <div class="certificate-details">
+                        Completed intensive internship in Full Stack Python Development. Gained hands-on experience in backend development using Python, Flask, SQLite3, and RESTful API development. Built complete web applications with user authentication and database management.
+                    </div>
+                </div>
+
+                <div class="certificate-card">
+                    <h3 class="certificate-title">Full Stack Web Development</h3>
+                    <div class="certificate-issuer">MIST Software Solutions Pvt Ltd</div>
+                    <div class="certificate-date">January 10, 2025 - January 25, 2025</div>
+                    <div class="certificate-details">
+                        Completed 15-day internship focusing on frontend web development. Mastered HTML5, CSS3, and Bootstrap framework. Developed responsive websites including Vetri Food and Farmeatz projects with modern design principles.
+                    </div>
+                </div>
+
+                <!-- NPTEL Certificates -->
+                <div class="certificate-card">
+                    <h3 class="certificate-title">Data Analytics with Python</h3>
+                    <div class="certificate-issuer">NPTEL (IIT/IISc)</div>
+                    <div class="certificate-date">January - April 2025</div>
+                    <div class="certificate-details">
+                        12-week comprehensive course covering data analysis, visualization, and machine learning using Python. Completed with distinction.
+                    </div>
+                    <div class="certificate-score">Score: 53/75</div>
+                </div>
+
+                <div class="certificate-card">
+                    <h3 class="certificate-title">Practical Cyber Security for Cyber Security Practitioners</h3>
+                    <div class="certificate-issuer">NPTEL (IIT/IISc)</div>
+                    <div class="certificate-date">July - October 2024</div>
+                    <div class="certificate-details">
+                        Advanced 12-week course focusing on practical cybersecurity implementations, threat analysis, and security protocols for industry practitioners.
+                    </div>
+                    <div class="certificate-score">Score: 56/75</div>
+                </div>
+
+                <!-- Cisco Certificate -->
+                <div class="certificate-card">
+                    <h3 class="certificate-title">Operating Systems Basics</h3>
+                    <div class="certificate-issuer">Cisco Networking Academy</div>
+                    <div class="certificate-date">Completed: April 27, 2025</div>
+                    <div class="certificate-details">
+                        Comprehensive course covering fundamental concepts of operating systems, process management, memory management, and system administration.
+                    </div>
+                </div>
+
+                <!-- SOHA Certificate -->
+                <div class="certificate-card">
+                    <h3 class="certificate-title">Seeds of Hope & Action (SOHA) Exhibition</h3>
+                    <div class="certificate-issuer">Bharat Soka Gakkai</div>
+                    <div class="certificate-date">April 3, 2025</div>
+                    <div class="certificate-details">
+                        Participated in sustainability exhibition focused on Sustainable Development Goals (SDGs). Joint initiative of Soka Gakkai International (SGI) and Earth Charter International, promoting environmental awareness and sustainable practices.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <p>&copy; 2025 Muthu Vel K. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="mailto:muthu2311vel@gmail.com">muthu2311vel@gmail.com</a>
+                    <span>|</span>
+                    <a href="tel:+919345178185">+91 9345178185</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
+
